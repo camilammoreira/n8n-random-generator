@@ -19,6 +19,11 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
+# Environment files (variáveis sensíveis)
+.env
+.env.local
+.env.*.local
+
 # npm
 package-lock.json
 .pnpm-debug.log
