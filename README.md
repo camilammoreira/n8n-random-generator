@@ -113,7 +113,7 @@ Existem duas formas de testar um node em uma instância local:
 
 - Após seguir as intruções desse documento, abra o n8n no browser. Você deve ver o node quando pesquisar por ele no nodes panel.
 - Preencha os campos conforme a seção Uso do Custom Node (abaixo) e execute.
-- Exemplo de saída esperada: {"randomNumber: 60"}
+- Exemplo de saída esperada em JSON: {"randomNumber": 60}
 
 #### 2. Usando linter
 
