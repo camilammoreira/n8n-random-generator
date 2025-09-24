@@ -4,6 +4,7 @@ import {
 	INodeType,
 	INodeTypeDescription,
 	IHttpRequestOptions,
+	NodeOperationError,
 } from 'n8n-workflow';
 
 export class Random implements INodeType {
@@ -74,7 +75,10 @@ export class Random implements INodeType {
 		for (let i = 0; i < items.length; i++) {
 			if (operation === 'generateNumber') {
 				if (min >= max) {
-					throw new Error('The minimum value must be less than the maximum value.');
+					throw new NodeOperationError(
+						this.getNode(),
+						'The minimum value must be less than the maximum value.',
+					);
 				} else {
 					const options: IHttpRequestOptions = {
 						headers: {
