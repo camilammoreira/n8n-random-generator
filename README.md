@@ -10,18 +10,19 @@ Abaixo encontram-se todas as orientações para instalar e executar o projeto de
 ## 📂 Estrutura do Repositório
 
 ```
-n8n-random-generator/       # Diretório raiz
+n8n-random-generator/         # Diretório raiz
 │
-├── n8n-nodes-random/       # Código-fonte do custom node
-│   ├── nodes/              # Implementação do node
-│   ├── package.json        # Configuração do pacote
-│   ├── tsconfig.json       # Configuração TypeScript
-│   ├── .eslintrc.js        # Configuração de boas práticas de código, necessário para testes com linter
-│   ├── gulpfile.js         # Script para automatizar tarefas de build
+├── custom
+│   └── n8n-nodes-random/     # Código-fonte do custom node
+│       ├── nodes/            # Implementação do node
+│       ├── package.json      # Configuração do pacote
+│       ├── tsconfig.json     # Configuração TypeScript
+│       ├── .eslintrc.js      # Configuração de boas práticas de código, necessário para testes com linter
+│       └── gulpfile.js       # Script para automatizar tarefas de build
 │
-├── docker-compose.yml      # Configuração Docker para n8n + Postgres + node custom
-├── .gitignore              # Arquivos ignorados pelo Git
-└── README.md               # Este arquivo
+├── docker-compose.yml        # Configuração Docker para n8n + Postgres + node custom
+├── .gitignore                # Arquivos ignorados pelo Git
+└── README.md                 # Este arquivo
 ```
 
 ---
@@ -51,7 +52,7 @@ Antes de começar, certifique-se de ter instalado no seu computador:
 Execute no terminal dentro do diretório raiz `n8n-random-generator/`:
 
 ```bash
-cd n8n-nodes-random
+cd custom/n8n-nodes-random
 npm install
 ```
 
@@ -66,7 +67,6 @@ npm run build
 ```
 
 Isso criará a pasta `dist/` contendo a versão compilada do seu custom node.
-Durante a execução, pode ocorrer o erro: `Error: ENOENT: no such file or directory, scandir '{PROJECT_DIR}\n8n-nodes-random\credentials`, isso é esperado e não afeta o funcionamento do node (mais detalhes na seção Obserções abaixo).
 
 ### 3. Executar o Serviço Localmente (usando Docker)
 
@@ -75,7 +75,7 @@ Durante a execução, pode ocorrer o erro: `Error: ENOENT: no such file or direc
 #### 3.2 Retorne para o diretório raiz do repositório (`n8n-random-generator/`):
 
 ```bash
-cd ..
+cd ../../
 ```
 
 #### 3.3. Suba os serviços com Docker Compose:
@@ -83,6 +83,8 @@ cd ..
 ```bash
 docker-compose up -d
 ```
+
+Atenção: essa execução pode demorar um pouco
 
 #### 3.4. Acesse a interface do n8n pelo browser:
 

@@ -36,7 +36,6 @@ services:
     volumes:
       - n8n_storage:/home/node/.n8n
       - ./custom:/home/node/.n8n/custom
-      - ./n8n-nodes-random/dist:/home/node/.n8n/custom
     depends_on:
       postgres:
         condition: service_healthy
