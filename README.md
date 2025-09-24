@@ -114,6 +114,12 @@ Existem duas formas de testar um node em uma instância local:
 
 ## 📝 Uso do Custom Node
 
+Na página "Set up owner account", faça o cadastro de nova conta
+
+Crie um workflow e vá até node panels, no botão `+` do lado direito
+
+Pesquise por `Random` para encontrar e adicionar este node ao workflow
+
 O node **Random** possui:
 
 - **Operação:** `True Random Number Generator`
