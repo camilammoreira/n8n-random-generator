@@ -16,7 +16,7 @@ n8n-random-generator/       # Diretório raiz
 │   ├── nodes/              # Implementação do node
 │   ├── package.json        # Configuração do pacote
 │   ├── tsconfig.json       # Configuração TypeScript
-│   ├── .eslintrc.js        # Configuração de regras de estilo e boas práticas de código
+│   ├── .eslintrc.js        # Configuração de boas práticas de código, necessário para testes
 │   ├── gulpfile.js         # Script para automatizar tarefas de build
 │
 ├── docker-compose.yml      # Configuração Docker para n8n + Postgres + node custom
@@ -58,17 +58,7 @@ npm install
 
 Isso irá instalar todas as dependências necessárias para compilar e rodar o seu node.
 
-### 2. Fazer a build do node
-
-Ainda com o terminal no diretório do node `n8n-nodes-random/`, execute a linha baixo para gerar a versão compilada do node (TypeScript → JavaScript):
-
-```bash
-npm run build
-```
-
-Isso criará a pasta `dist/` contendo a versão compilada do seu custom node.
-
-### 3. Configurar Ambiente
+### 2. Configurar Ambiente
 
 #### Configure suas variáveis de ambiente no arquivo `.env`:
 
@@ -84,6 +74,16 @@ POSTGRES_NON_ROOT_PASSWORD=n8n_password
 ```
 
 Essas variáveis configuram o acesso ao banco de dados PostgreSQL usado pelo n8n.
+
+### 3. Fazer a build do node
+
+Ainda com o terminal no diretório do node `n8n-nodes-random/`, execute a linha baixo para gerar a versão compilada do node (TypeScript → JavaScript):
+
+```bash
+npm run build
+```
+
+Isso criará a pasta `dist/` contendo a versão compilada do seu custom node.
 
 ### 4. Executar o Serviço Localmente (usando Docker)
 
