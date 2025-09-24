@@ -16,11 +16,10 @@ n8n-random-generator/       # Diretório raiz
 │   ├── nodes/              # Implementação do node
 │   ├── package.json        # Configuração do pacote
 │   ├── tsconfig.json       # Configuração TypeScript
-│   ├── .eslintrc.js        # Configuração de boas práticas de código, necessário para testes
+│   ├── .eslintrc.js        # Configuração de boas práticas de código, necessário para testes com linter
 │   ├── gulpfile.js         # Script para automatizar tarefas de build
 │
 ├── docker-compose.yml      # Configuração Docker para n8n + Postgres + node custom
-├── init-data.sh            # Script inicial para PostgreSQL
 ├── .gitignore              # Arquivos ignorados pelo Git
 └── README.md               # Este arquivo
 ```
@@ -58,24 +57,7 @@ npm install
 
 Isso irá instalar todas as dependências necessárias para compilar e rodar o seu node.
 
-### 2. Configurar Ambiente
-
-#### Configure suas variáveis de ambiente no arquivo `.env`:
-
-Crie um arquivo `.env` na raiz (`n8n-random-generator/`) com o seguinte conteúdo:
-
-```env
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres_password
-POSTGRES_DB=n8n
-
-POSTGRES_NON_ROOT_USER=n8n
-POSTGRES_NON_ROOT_PASSWORD=n8n_password
-```
-
-Essas variáveis configuram o acesso ao banco de dados PostgreSQL usado pelo n8n.
-
-### 3. Fazer a build do node
+### 2. Fazer a build do node
 
 Ainda com o terminal no diretório do node `n8n-nodes-random/`, execute a linha baixo para gerar a versão compilada do node (TypeScript → JavaScript):
 
@@ -84,20 +66,25 @@ npm run build
 ```
 
 Isso criará a pasta `dist/` contendo a versão compilada do seu custom node.
+Durante a execução, pode ocorrer o erro: `Error: ENOENT: no such file or directory, scandir '{PROJECT_DIR}\n8n-nodes-random\credentials`, isso é esperado e não afeta o funcionamento do node (mais detalhes na seção Obserções abaixo).
 
-### 4. Executar o Serviço Localmente (usando Docker)
+### 3. Executar o Serviço Localmente (usando Docker)
 
-Abra o Docker Desktop e certifique-se que a `Engine` esteja correndo (canto inferior esquerdo)
+#### 3.1 Abra o Docker Desktop e certifique-se que a `Engine` esteja correndo (canto inferior esquerdo)
 
-Execute no terminal dentro do diretório raiz do repositório (`n8n-random-generator/`):
+#### 3.2 Retorne para o diretório raiz do repositório (`n8n-random-generator/`):
 
-#### 4.1. Suba os serviços com Docker Compose:
+```bash
+cd ..
+```
+
+#### 3.3. Suba os serviços com Docker Compose:
 
 ```bash
 docker-compose up -d
 ```
 
-#### 4.2. Acesse a interface do n8n pelo browser:
+#### 3.4. Acesse a interface do n8n pelo browser:
 
 ```
 http://localhost:5678
@@ -105,7 +92,7 @@ http://localhost:5678
 
 Agora você poderá encontrar o custom node **Random** no nodes panel do n8n.
 
-### 5. Executar os testes
+### 4. Executar os testes
 
 Existem duas formas de testar um node em uma instância local:
 
