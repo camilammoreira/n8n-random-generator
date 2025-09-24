@@ -16,6 +16,8 @@ n8n-random-generator/       # Diretório raiz
 │   ├── nodes/              # Implementação do node
 │   ├── package.json        # Configuração do pacote
 │   ├── tsconfig.json       # Configuração TypeScript
+│   ├── .eslintrc.js        # Configuração de regras de estilo e boas práticas de código
+│   ├── gulpfile.js         # Script para automatizar tarefas de build
 │
 ├── docker-compose.yml      # Configuração Docker para n8n + Postgres + node custom
 ├── init-data.sh            # Script inicial para PostgreSQL
